@@ -1,0 +1,126 @@
+html, body, .ng-scope {
+  width: 100%;
+  height: 100%;
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmation, .message {
+  text-align: center;
+}
+
+/* buttons */
+.btn-primary
+{
+  background-color: #191818 !important;
+  border-color: #191818;
+  border-radius: 0;
+}
+
+.btn-primary[disabled]:hover,
+.btn-primary:hover
+{
+  -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}
+
+.btn-clear {
+  float: left;
+}
+
+.btn-next {
+  float: right;
+}
+
+.btn-restart {
+  margin-top: 10px;
+}
+
+/* panel */
+.panel-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel {
+  width: 600px;
+  max-width: 600px;
+  border-radius: 0;
+  border-color: #191818;
+}
+
+.panel-heading {
+  background-color: #191818;
+  border-radius: 0;
+  color: #FFFFFF;
+}
+
+/* input group */
+.input-group {
+  width: 100%;
+}
+
+.input-group-addon {
+  width: 80px;
+}
+
+.inner-addon {
+  position: relative;
+}
+
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+.left-addon .glyphicon  {
+  left:  0px;
+}
+
+.right-addon .glyphicon {
+  right: 0px;
+}
+
+.left-addon input  {
+  padding-left:  30px;
+}
+
+.right-addon input {
+  padding-right: 30px;
+}
+
+/* button groups */
+.btn-group-vertical {
+  width: 100%;
+}
+
+/* icons */
+.glyphicon-exclamation-sign {
+  color: #a94442;
+  z-index: 3;
+}
+
+.glyphicon-ok {
+  color: #3c763d;
+  z-index: 3;
+}
+
+.confirmation .glyphicon-ok {
+  font-size: 100px;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="timeSheetApp">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="css/loader.css" />
+
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular-route/angular-route.min.js"></script>
+
+  <script src="js/controller.js"></script>
+  <script type="text/ng-template" id="form.html">
+        <div class="content" ng-controller="formController">
+        <div class="overlay" ng-show="isLoading" class="ng-hide">
+          <div class="loader"></div>
+        </div>
+        <div class="panel-container">
+          <div class="panel" ng-show="isConfirmed">
+            <div class="panel-heading">Timesheet Submitted</div>
+            <div class="confirmation panel-body">
+              <div class="message">
+                <i class="glyphicon glyphicon-ok"></i>
+                <br>
+                Thank you <b>{{email}}</b>
+                <br>
+                You have logged <b>{{time}}</b> of work today.
+              </div>
+              <button class="btn btn-primary btn-restart" ng-click="startOver()">Start Again</button>
+            </div>
+          </div>
+          <div class="panel" ng-hide="isConfirmed">
+            <div class="panel-heading">Submit Timesheet</div>
+            <div class="panel-body">
+              <form name="submissionForm" novalidate>
+                <div class="form-group" ng-class="{'has-error': submissionForm.email.$invalid && !submissionForm.email.$pristine}">
+                  <div class="input-group inner-addon right-addon">
+                      <span class="input-group-addon">Email*</span>
+                      <i ng-show="submissionForm.email.$invalid && !submissionForm.email.$pristine" class="glyphicon glyphicon-exclamation-sign"></i>
+                      <i ng-show="submissionForm.email.$valid && !submissionForm.email.$pristine" class="glyphicon glyphicon-ok"></i>
+                      <input name="email" placeholder="e.g. example@mail.com" class="form-control" ng-model="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required></input>
+                  </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': submissionForm.time.$invalid && !submissionForm.time.$pristine}">
+                  <div class="input-group inner-addon right-addon">
+                      <span class="input-group-addon">Time*</span>
+                      <i ng-show="submissionForm.time.$invalid && !submissionForm.time.$pristine" class="glyphicon glyphicon-exclamation-sign"></i>
+                      <i ng-show="submissionForm.time.$valid && !submissionForm.time.$pristine" class="glyphicon glyphicon-ok"></i>
+                      <input name="time" placeholder="e.g. 5 hours 12 mins" class="form-control" ng-model="time" validate-time required></input>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                      <span class="input-group-addon">Message</span>
+                      <textarea name="message" placeholder="(optional)" class="form-control" rows="4" ng-model="message"></textarea>
+                  </div>
+                </div>
+                <label>What type of work is this for?</label>
+                <div class="form-group">
+                  <div class="btn-group-vertical">
+                    <label class="btn btn-default">
+                      <input type="radio" name="type" ng-model="type" value="1" ng-checked="true">
+                      Time working on visual effects for movie.
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="type" ng-model="type" ng-value="2">
+                      Time spent reviewing the work of a junior artist
+                    </label>
+                  </div>
+                </div>
+                <button class="btn btn-primary btn-clear" ng-click="clear()">Clear</button>
+                <button class="btn btn-primary btn-next" ng-click="submit()" ng-disabled="submissionForm.$invalid">Next</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </script>
+
+  <title>Timesheet Submission App</title>
+</head>
+<body>
+  <div ng-view />
+</body>
+</html>
