@@ -1,5 +1,5 @@
 # Timesheet-Demo
-This demo was writting in Angular and styled using Bootstrap. Since it's only for demo purpose, it doesn't make any actual service call, and thus the application can be executed offline without a localhost.
+This demo was written in Angular and styled using Bootstrap. Since it's only for demo purpose, it doesn't make any actual service call, and thus the application can be run offline without a localhost by opening index.html in a browser directly.
 The form allows user to enter information of a timesheet:
 - **email** required
 - **time** required (the format accepts both the acronym h and m or the entire word hours and minutes. e.g. 1 h 20 m, 1 hour 20 minutes...etc).
